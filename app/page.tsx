@@ -3,6 +3,7 @@ import { useState } from 'react';
 import PollCard from '@/components/PollCard';
 import PostCard from '@/components/PostCard';
 import QuestCard from '@/components/QuestCard';
+import LiveFeed from '@/components/LiveFeed';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<'forYou' | 'following' | 'quests'>('forYou');
@@ -93,26 +94,11 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Post Composer Box */}
-          <div className="bg-[#151221] border border-white/[0.08] rounded-2xl p-5 shadow-xl space-y-4">
-            <textarea 
-              rows={3}
-              placeholder="What's cooking in your mind? Share an idea or start a debate..."
-              className="w-full bg-[#0B0914] border border-white/[0.06] rounded-xl p-4 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-violet-500/50 resize-none transition-all"
-            ></textarea>
-            <div className="flex items-center justify-between pt-1">
-              <div className="flex items-center space-x-2 text-xs text-slate-400">
-                <button className="hover:text-violet-400 px-3 py-1.5 rounded-lg bg-white/[0.02] border border-white/[0.05] transition-colors">📊 Poll</button>
-                <button className="hover:text-violet-400 px-3 py-1.5 rounded-lg bg-white/[0.02] border border-white/[0.05] transition-colors">🖼️ Image</button>
-              </div>
-              <button className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-semibold text-xs px-5 py-2.5 rounded-xl shadow-lg shadow-violet-900/30 transition-all">
-                Publish Post
-              </button>
-            </div>
-          </div>
+          {/* Live Database Post Composer & Stream */}
+          <LiveFeed />
 
-          {/* Dynamic Feed Stream */}
-          <div className="space-y-6">
+          {/* Additional Static / Interactive Widgets */}
+          <div className="space-y-6 pt-2">
             <QuestCard 
               title="7-Day Next.js & Tailwind Consistency Challenge" 
               category="Engineering Quest" 
