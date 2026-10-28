@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  passwordHash  String?   // Hashed, never plaintext
+  image         String?
+  bio           String?
+  xp            Int       @default(0)
+  level         Int       @default(1)
+  posts         Post[]
+  votes         Vote[]
+  memberships   RoomMember[]
+  createdAt     DateTime  @default(now())
+}
+
+model Post {
+  id          String    @id @default(cuid())
+  content     String?
+  type        PostType  @default(TEXT) // TEXT, POLL, QUESTION
+  authorId    String
+  author      User      @relation(fields: [authorId], references: [id])
+  roomId      String?
+  room        Room?     @relation(fields: [roomId], references: [id])
+  options     Option[]  // For Polls
+  createdAt   DateTime  @default(now())
+}
+
+model Option {
+  id      String @id @default(cuid())
+  text    String
+  postId  String
+  post    Post   @relation(fields: [postId], references: [id])
+  votes   Vote[]
+}
+
+model Vote {
+  id        String   @id @default(cuid())
+  userId    String
+  optionId  String
+  user      User     @relation(fields: [userId], references: [id])
+  option    Option   @relation(fields: [optionId], references: [id])
+
+  @@unique([userId, optionId]) // Prevents duplicate votes on the database level
+}
+
+model Room {
+  id          String       @id @default(cuid())
+  name        String       @unique
+  description String?
+  members     RoomMember[]
+  posts       Post[]
+}
+
+model RoomMember {
+  userId  String
+  roomId  String
+  role    Role   @default(MEMBER)
+  user    User   @relation(fields: [userId], references: [id])
+  room    Room   @relation(fields: [roomId], references: [id])
+
+  @@id([userId, roomId])
+}
+
+enum PostType {
+  TEXT
+  POLL
+  QUESTION
+}
+
+enum Role {
+  ADMIN
+  MODERATOR
+  MEMBER
+}
