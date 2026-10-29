@@ -69,9 +69,9 @@ export default function Home() {
         {/* 3-Column Clean Dashboard Grid */}
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 p-6 max-w-[1600px] mx-auto w-full">
           
-          {/* Left Column: Navigation Menu */}
+          {/* Left Column: Rich Navigation Menu */}
           <div className="hidden lg:block lg:col-span-3 space-y-4">
-            <div className="bg-[#110E1B] border border-white/[0.06] rounded-3xl p-3 shadow-xl space-y-1">
+            <div className="bg-[#110E1B] border border-white/[0.06] rounded-3xl p-3 shadow-xl space-y-1.5">
               <button onClick={() => setActiveTab('home')} className={`w-full flex items-center space-x-3 px-4 py-3 rounded-2xl text-xs font-bold transition-all ${activeTab === 'home' ? 'bg-violet-600/20 text-violet-400 border border-violet-500/30' : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]'}`}>
                 <span>🏠</span>
                 <span>Home Feed & Posts</span>
@@ -83,6 +83,22 @@ export default function Home() {
               <button onClick={() => setActiveTab('gaming')} className={`w-full flex items-center space-x-3 px-4 py-3 rounded-2xl text-xs font-semibold transition-all ${activeTab === 'gaming' ? 'bg-violet-600/20 text-violet-400 border border-violet-500/30' : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]'}`}>
                 <span>🎮</span>
                 <span>Gaming & VR Hub</span>
+              </button>
+              <button onClick={() => setActiveTab('tech')} className={`w-full flex items-center space-x-3 px-4 py-3 rounded-2xl text-xs font-semibold transition-all ${activeTab === 'tech' ? 'bg-violet-600/20 text-violet-400 border border-violet-500/30' : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]'}`}>
+                <span>⚡</span>
+                <span>Science & Tech</span>
+              </button>
+              <button onClick={() => setActiveTab('dev')} className={`w-full flex items-center space-x-3 px-4 py-3 rounded-2xl text-xs font-semibold transition-all ${activeTab === 'dev' ? 'bg-violet-600/20 text-violet-400 border border-violet-500/30' : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]'}`}>
+                <span>🎓</span>
+                <span>Student & Dev Hub</span>
+              </button>
+              <button onClick={() => setActiveTab('art')} className={`w-full flex items-center space-x-3 px-4 py-3 rounded-2xl text-xs font-semibold transition-all ${activeTab === 'art' ? 'bg-violet-600/20 text-violet-400 border border-violet-500/30' : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]'}`}>
+                <span>🎨</span>
+                <span>3D Art & NFTs</span>
+              </button>
+              <button onClick={() => setActiveTab('quests')} className={`w-full flex items-center space-x-3 px-4 py-3 rounded-2xl text-xs font-semibold transition-all ${activeTab === 'quests' ? 'bg-violet-600/20 text-violet-400 border border-violet-500/30' : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]'}`}>
+                <span>🎯</span>
+                <span>Daily Quests & NX</span>
               </button>
             </div>
           </div>
