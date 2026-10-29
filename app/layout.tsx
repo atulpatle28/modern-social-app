@@ -1,8 +1,11 @@
 import './globals.css';
+import { Outfit } from 'next/font/google';
+
+const outfit = Outfit({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'ModernConnect Pro v2.0',
-  description: 'Modern Social Media Platform with Supabase',
+  description: 'High-End Gamified Social Platform',
 };
 
 export default function RootLayout({
@@ -11,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-[#07050D] text-slate-100 min-h-screen selection:bg-violet-600 selection:text-white">
+    <html lang="en" className={outfit.className}>
+      <body className="bg-[#040208] text-slate-100 min-h-screen selection:bg-violet-600 selection:text-white antialiased">
         {children}
       </body>
     </html>
